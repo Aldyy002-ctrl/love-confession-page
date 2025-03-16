@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Hari Valentine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        
+        body {
+            background-color: #ffe6f2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 800px;
+        }
+        
+        header {
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #ff3366;
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+        }
+        
+        p {
+            color: #ff66b2;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .heart, .heart::before, .heart::after {
+            display: none;
+        }
+        
+        #heartContainer {
+            margin: 30px auto;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+        }
+        
+        #mainGif, #cryingGif, #loveGif {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 20px 0;
+            max-width: 600px;
+            position: relative;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 15px solid white;
+        }
+        
+        .btn {
+            background-color: #ff3366;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 10px 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 51, 102, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(255, 51, 102, 0.4);
+        }
+        
+        .btn-no {
+            background-color: #ff99c2;
+            position: relative;
+        }
+        
+        #message {
+            font-size: 1.5rem;
+            color: #ff3366;
+            margin: 20px 0;
+            min-height: 60px;
+        }
+        
+        .flowers {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            pointer-events: none;
+        }
+        
+        .flower {
+            position: absolute;
+            bottom: -20px;
+            background-color: #ff99c2;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+        
+        .flower::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 40px;
+            background-color: #66cc66;
+            bottom: -35px;
+            left: 10px;
+        }
+        
+        .flying-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .flying-heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff3366;
+            animation: flyUp 5s linear infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes flyUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            #mainGif, #cryingGif, #loveGif {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pertanyaan Simpel</h1>
+            <p>Tapi...</p>
+        </header>
+        
+        <div id="heartContainer">
+            <img src="cute-baby.gif.f78e9b9f096e7958dcbe440169255fa5.gif" id="mainGif">
+            <img src="cute-sad.gif" id="cryingGif" style="display: none;">
+            <img src="robert-bri.gif" id="loveGif" style="display: none;">
+        </div>
+        
+        <div class="card">
+            <p>Untuk kamu yang mendapat link website ini...</p>
+            <p>Kamu bukan semata-mata orang biasa, yang bisa aku berikan link website ini.
+                Jika kamu telah mendapat link ini artinya kamu adalah orang tersayang yang sudah ku anggap keluarga
+            </p>
+            <p>ya begitulah😖</p>
+            <p>Pertanyaan nya kamu sayang aku enggak🗿?</p>
+        </div>
+        
+        <div id="message"></div>
+        
+        <div>
+            <button id="btnYes" class="btn">iyaa</button>
+            <button id="btnNo" class="btn btn-no">ndak</button>
+        </div>
+    </div>
+    
+    <div class="flowers" id="flowers"></div>
+    <div class="flying-hearts" id="flyingHearts"></div>
+    
+    <script>
+        const messages = [
+            "Kamu yakin?",
+            "Coba pikirkan lagi",
+            "Sungguh?",
+            "Masa sih?",
+            "Jangan bohong",
+            "Aku sedih...",
+            "Aku akan menangis",
+            "Coba klik ''!",
+            "Please?",
+            "cantik? Ayolah..."
+        ];
+        
+        let btnNo = document.getElementById('btnNo');
+        let btnYes = document.getElementById('btnYes');
+        let message = document.getElementById('message');
+        let flowers = document.getElementById('flowers');
+        let flyingHearts = document.getElementById('flyingHearts');
+        let clickCount = 0;
+        let noClickCount = 0;
+        
+        btnNo.addEventListener('mouseenter', function() {
+            let xPos = Math.floor(Math.random() * (window.innerWidth - 100));
+            let yPos = Math.floor(Math.random() * (window.innerHeight - 100));
+            
+            if (xPos < 100) xPos = 100;
+            if (yPos < 100) yPos = 100;
+            
+            btnNo.style.position = 'absolute';
+            btnNo.style.left = xPos + 'px';
+            btnNo.style.top = yPos + 'px';
+            
+            noClickCount++;
+            
+            if (noClickCount >= 5) {
+                document.getElementById('mainGif').style.display = 'none';
+                document.getElementById('cryingGif').style.display = 'block';
+            }
+            
+            if (clickCount < messages.length) {
+                message.textContent = messages[clickCount];
+                clickCount++;
+            } else {
+                clickCount = 0;
+            }
+        });
+        
+        btnYes.addEventListener('click', function() {
+            document.getElementById('mainGif').style.display = 'none';
+            document.getElementById('cryingGif').style.display = 'none';
+            document.getElementById('loveGif').style.display = 'block';
+            message.innerHTML = "<strong>Aku juga sayang kamu! ❤️</strong>";
+            btnNo.style.display = 'none';
+            btnYes.style.display = 'none';
+            
+            // Tambahkan kode pelacakan
+            const visitorName = getUrlParameter('name') || prompt("Inisial nama kamu?", "");
+            if (visitorName) {
+                logResponse(visitorName, "iyaa");
+            }
+            
+            // Create flowers at the bottom
+            for (let i = 0; i < 15; i++) {
+                createFlower();
+            }
+            
+            // Create flying hearts
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    createFlyingHeart();
+                }, i * 300);
+            }
+            
+            // Confetti effect
+            const confettiCount = 200;
+            const confetti = document.createElement('div');
+            confetti.style.position = 'fixed';
+            confetti.style.top = 0;
+            confetti.style.left = 0;
+            confetti.style.width = '100%';
+            confetti.style.height = '100%';
+            confetti.style.pointerEvents = 'none';
+            confetti.style.zIndex = -1;
+            document.body.appendChild(confetti);
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confettiPiece = document.createElement('div');
+                confettiPiece.style.position = 'absolute';
+                confettiPiece.style.width = Math.random() * 10 + 5 + 'px';
+                confettiPiece.style.height = Math.random() * 10 + 5 + 'px';
+                confettiPiece.style.backgroundColor = getRandomColor();
+                confettiPiece.style.top = '-10px';
+                confettiPiece.style.left = Math.random() * 100 + 'vw';
+                confettiPiece.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confettiPiece.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
+                confettiPiece.style.animationDelay = Math.random() * 5 + 's';
+                confetti.appendChild(confettiPiece);
+            }
+            
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes fall {
+                    0% {
+                        transform: translateY(0) rotate(0deg);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translateY(100vh) rotate(360deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+        
+        btnNo.addEventListener('click', function() {
+            const visitorName = getUrlParameter('name') || localStorage.getItem('visitorName');
+            if (visitorName) {
+                logResponse(visitorName, "ndak (mencoba menolak)");
+            }
+        });
+        
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.style.left = Math.random() * 100 + '%';
+            flower.style.bottom = Math.random() * 20 - 10 + 'px';
+            flower.style.backgroundColor = getRandomPinkShade();
+            flowers.appendChild(flower);
+        }
+        
+        function createFlyingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'flying-heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = '100%';
+            heart.style.opacity = Math.random() * 0.5 + 0.5;
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            flyingHearts.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        
+        function getRandomColor() {
+            const colors = ['#ff3366', '#ff66b2', '#ff99c2', '#ffcce6', '#ffffff'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+        
+        function getRandomPinkShade() {
+            const pinks = ['#ff3366', '#ff66b2', '#ff99c2', '#ffcce6'];
+            return pinks[Math.floor(Math.random() * pinks.length)];
+        }
+        
+        // Add some initial flying hearts
+        for (let i = 0; i < 10; i++) {
+            setTimeout(() => {
+                createFlyingHeart();
+            }, i * 500);
+        }
+
+        // Fungsi untuk mendapatkan parameter URL
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Fungsi untuk mengirim data ke server atau layanan pencatatan
+        function logResponse(name, response) {
+            // Menggunakan Formspree - cara mudah tanpa perlu setup rumit
+            fetch('https://formspree.io/f/xeoaogyg', { // Ganti dengan URL endpoint Formspree Anda
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    inisial: name,
+                    jawaban: response, 
+                    waktu: new Date().toString()
+                })
+            });
+            
+            console.log(`Jawaban dicatat: ${name} menjawab "${response}"`);
+        }
+    </script>
+</body>
+</html>
